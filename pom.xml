@@ -44,7 +44,6 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/rodrigo-magalhaes/clinic-pet.git</developerConnection>
-      <tag>pet-clinic-0.0.1</tag>
   </scm>
 
 </project>
