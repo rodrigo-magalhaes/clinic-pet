@@ -3,16 +3,11 @@
     <parent>
         <artifactId>pet-clinic</artifactId>
         <groupId>com.spring</groupId>
-        <version>0.0.2-SNAPSHOT</version>
+        <version>0.0.2</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>pet-clinic-data</artifactId>
-
-    <properties>
-        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
-    </properties>
-
 
     <dependencies>
         <dependency>
@@ -41,4 +36,16 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
