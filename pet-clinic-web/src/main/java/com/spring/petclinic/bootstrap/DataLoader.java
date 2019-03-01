@@ -23,14 +23,14 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Owner peleh = new Owner(1L, "Pelé", "O Rei");
-        Owner garrincha = new Owner(2L, "Ronaldo", "Fenomeno");
+        Owner peleh = new Owner("Pelé", "O Rei");
+        Owner garrincha = new Owner("Ronaldo", "Fenomeno");
 
         this.ownerService.save(peleh);
         this.ownerService.save(garrincha);
 
-        Vet michael = new Vet(1L, "Michael", "Jackson");
-        Vet elvis = new Vet(2L, "Elvis", "Presley");
+        Vet michael = new Vet("Michael", "Jackson");
+        Vet elvis = new Vet("Elvis", "Presley");
 
         this.vetService.save(michael);
         this.vetService.save(elvis);

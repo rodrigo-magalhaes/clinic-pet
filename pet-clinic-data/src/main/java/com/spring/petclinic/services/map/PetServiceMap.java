@@ -9,7 +9,7 @@ public class PetServiceMap extends AbastractMapService<Pet, Long> implements Cru
 
     @Override
     public Pet save(Pet pet) {
-        return super.save(pet.getId(), pet);
+        return super.save(pet);
     }
 
     @Override

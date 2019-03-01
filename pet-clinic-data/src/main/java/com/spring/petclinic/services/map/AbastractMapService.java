@@ -1,13 +1,12 @@
 package com.spring.petclinic.services.map;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import com.spring.petclinic.model.BaseEntity;
 
-public abstract class AbastractMapService<T, ID> {
+import java.util.*;
 
-    protected Map<ID, T> map = new HashMap<>();
+public abstract class AbastractMapService<T extends BaseEntity, ID extends Long> {
+
+    protected Map<Long, T> map = new HashMap<>();
 
     Set<T> findAll() {
         return new HashSet<>(map.values());
@@ -17,8 +16,15 @@ public abstract class AbastractMapService<T, ID> {
         return map.get(id);
     }
 
-    T save(ID id, T t) {
-        map.put(id, t);
+    T save(T t) {
+
+        if(t != null){
+            if(t.getId() == null){
+                t.setId(this.getNextId());
+            }
+            map.put(t.getId(), t);
+        }
+
         return t;
     }
 
@@ -28,5 +34,15 @@ public abstract class AbastractMapService<T, ID> {
 
     void delete(T t) {
         map.entrySet().removeIf(entry -> entry.getValue().equals(t));
+    }
+
+    private Long getNextId() {
+        Long result = null;
+        try{
+            result = Collections.max(map.keySet())+1;
+        } catch (NoSuchElementException e) {
+            result = 1L;
+        }
+        return result;
     }
 }
