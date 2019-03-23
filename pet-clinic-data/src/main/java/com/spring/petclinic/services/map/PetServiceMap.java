@@ -1,11 +1,13 @@
 package com.spring.petclinic.services.map;
 
 import com.spring.petclinic.model.Pet;
-import com.spring.petclinic.services.CrudService;
+import com.spring.petclinic.services.PetService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
-public class PetServiceMap extends AbastractMapService<Pet, Long> implements CrudService<Pet, Long> {
+@Service
+public class PetServiceMap extends AbastractMapService<Pet, Long> implements PetService {
 
     @Override
     public Pet save(Pet pet) {

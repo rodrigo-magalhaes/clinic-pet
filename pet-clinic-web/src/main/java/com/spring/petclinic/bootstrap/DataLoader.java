@@ -1,6 +1,7 @@
 package com.spring.petclinic.bootstrap;
 
 import com.spring.petclinic.model.Owner;
+import com.spring.petclinic.model.Pet;
 import com.spring.petclinic.model.PetType;
 import com.spring.petclinic.model.Vet;
 import com.spring.petclinic.services.OwnerService;
@@ -9,6 +10,8 @@ import com.spring.petclinic.services.VetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -29,17 +32,36 @@ public class DataLoader implements CommandLineRunner {
 
         PetType dog = new PetType();
         dog.setName("Dog");
-        PetType savedDog = petTypeService.save(dog);
 
         PetType cat = new PetType();
         dog.setName("Cat");
-        PetType savedCat = petTypeService.save(cat);
 
         Owner peleh = new Owner("Pelé", "O Rei");
-        Owner garrincha = new Owner("Ronaldo", "Fenomeno");
+        peleh.setAddress("rua do rei");
+        peleh.setCity("Cidade de Deus");
+        peleh.setTelephone("707070denovo");
+
+        Pet pelehDog = new Pet();
+        pelehDog.setName("copa");
+        pelehDog.setPetType(dog);
+        pelehDog.setOwner(peleh);
+        pelehDog.setBirthDate(LocalDate.now());
+        peleh.getPets().add(pelehDog);
+
+        Owner ronaldo = new Owner("Ronaldo", "Fenomeno");
+        ronaldo.setAddress("estrada tortuosa");
+        ronaldo.setCity("Mallorca");
+        ronaldo.setTelephone("9999999999");
+
+        Pet ronaldoCat = new Pet();
+        ronaldoCat.setName("trave");
+        ronaldoCat.setPetType(cat);
+        ronaldoCat.setOwner(ronaldo);
+        ronaldoCat.setBirthDate(LocalDate.now());
+        ronaldo.getPets().add(ronaldoCat);
 
         this.ownerService.save(peleh);
-        this.ownerService.save(garrincha);
+        this.ownerService.save(ronaldo);
 
         Vet michael = new Vet("Michael", "Jackson");
         Vet elvis = new Vet("Elvis", "Presley");
