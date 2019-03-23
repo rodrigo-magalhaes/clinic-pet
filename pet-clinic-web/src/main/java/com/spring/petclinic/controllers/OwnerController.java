@@ -24,4 +24,10 @@ public class OwnerController {
 
         return "owners/index";
     }
+
+    @RequestMapping({"/find", "/find.html"})
+    public String findOwners() {
+
+        return "notimplemented";
+    }
 }
