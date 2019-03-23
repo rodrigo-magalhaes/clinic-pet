@@ -1,6 +1,10 @@
 package com.spring.petclinic.model;
 
+import java.util.Set;
+
 public class Owner extends Person {
+
+    private Set<Pet> pets;
 
     public Owner() {
     }
@@ -14,6 +18,14 @@ public class Owner extends Person {
         this.setId(id);
         this.setFirstName(firstName);
         this.setLastName(lastName);
+    }
+
+    public Set<Pet> getPets() {
+        return pets;
+    }
+
+    public void setPets(Set<Pet> pets) {
+        this.pets = pets;
     }
 
 }
