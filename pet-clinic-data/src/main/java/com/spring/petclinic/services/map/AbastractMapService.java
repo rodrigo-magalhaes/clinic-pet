@@ -18,8 +18,8 @@ public abstract class AbastractMapService<T extends BaseEntity, ID extends Long>
 
     T save(T t) {
 
-        if(t != null){
-            if(t.getId() == null){
+        if (t != null) {
+            if (t.getId() == null) {
                 t.setId(this.getNextId());
             }
             map.put(t.getId(), t);
@@ -38,8 +38,8 @@ public abstract class AbastractMapService<T extends BaseEntity, ID extends Long>
 
     private Long getNextId() {
         Long result = null;
-        try{
-            result = Collections.max(map.keySet())+1;
+        try {
+            result = Collections.max(map.keySet()) + 1;
         } catch (NoSuchElementException e) {
             result = 1L;
         }
