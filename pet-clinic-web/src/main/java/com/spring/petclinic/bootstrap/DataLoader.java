@@ -43,7 +43,7 @@ public class DataLoader implements CommandLineRunner {
         dog.setName("Dog");
 
         PetType cat = new PetType();
-        dog.setName("Cat");
+        cat.setName("Cat");
 
         Speciality radiology = new Speciality();
         radiology.setDescription("Radiology");

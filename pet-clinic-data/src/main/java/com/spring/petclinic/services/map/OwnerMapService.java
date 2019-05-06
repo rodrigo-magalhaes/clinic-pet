@@ -8,7 +8,9 @@ import com.spring.petclinic.services.PetTypeService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @Profile({"default", "map"})
@@ -74,5 +76,12 @@ public class OwnerMapService extends AbastractMapService<Owner, Long> implements
                 .filter(owner -> owner.getLastName().equalsIgnoreCase(lastName))
                 .findFirst()
                 .orElse(null);
+    }
+
+    @Override
+    public List<Owner> finadAllByLastNameLike(String lastName) {
+        return this.findAll().stream()
+                .filter(owner -> owner.getLastName().toUpperCase().contains(lastName.toUpperCase()))
+                .collect(Collectors.toList());
     }
 }
