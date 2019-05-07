@@ -46,4 +46,17 @@ public class Owner extends Person {
             this.pets = pets;
         }
     }
+
+    public Pet getPet(String name) {
+        return getPet(name, false);
+    }
+
+    public Pet getPet(String name, boolean ignoreNew) {
+        final String nameToLower = name.toLowerCase();
+        return pets.stream()
+                .filter(pet -> !ignoreNew || !pet.isNew())
+                .filter(pet -> pet.getName().toLowerCase().equals(nameToLower))
+                .findAny()
+                .orElse(null);
+    }
 }
